@@ -6,15 +6,15 @@ namespace GroomingSalonApp
 {
     class GroomingService
     {
-        private static int groomingServiceId = 0;
+        private static int lastServiceId = 0;
 
         #region Properties
-        public int GroomingServiceId { get; }
+        public int ServiceId { get; }
         public string ServiceName { get; set; }
         public string ServiceDescription { get; set; }
         public string Species { get; set; }
         public string Breed { get; set; }
-        public double GroomingPrice { get; set; }
+        public double ServicePrice { get; set; }
 
         #endregion
     }

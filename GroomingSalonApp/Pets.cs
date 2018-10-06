@@ -10,7 +10,7 @@ namespace GroomingSalonApp
 
         #region Properties
         public int PetId { get; }
-        public int CustomerAccountId { get; set; }
+        public int CustomerId { get; set; }
         public string PetName { get; set; }
         public string Species { get; set; }
         public string Breed { get; set; }
@@ -18,10 +18,10 @@ namespace GroomingSalonApp
         #endregion
 
         #region Constructor
-        public Pets(int _CustomerAccountId, string _PetName)
+        public Pets(int customerId, string petName)
         {
-            CustomerAccountId = _CustomerAccountId;
-            PetName = _PetName; 
+            CustomerId = customerId;
+            PetName = petName; 
         }
         #endregion
     }

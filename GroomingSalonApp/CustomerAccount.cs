@@ -9,7 +9,7 @@ namespace GroomingSalonApp
         private static int lastAccountId = 0;
 
         #region Properties
-        public int CustomerAccountId { get; }
+        public int CustomerId { get; }
         public string CustomerFN { get; set; }
         public string CustomerLN { get; set; }
         public string StreetAddress { get; set; }
@@ -22,7 +22,7 @@ namespace GroomingSalonApp
         #region Constructor
         public CustomerAccount()
         {
-            CustomerAccountId = ++lastAccountId;
+            CustomerId = ++lastAccountId;
             CreatedDate = DateTime.Now;
         }
         #endregion
