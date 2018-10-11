@@ -5,7 +5,7 @@ using System.Text;
 namespace GroomingSalonApp
 {
     //My Repo
-    class GroomingStylist
+    class Stylist
     {
         private static int lastStylistId = 0;
 

@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class GroomingTransaction { 
+    class Transaction { 
     
 
         private static int lastTransactionId = 0;

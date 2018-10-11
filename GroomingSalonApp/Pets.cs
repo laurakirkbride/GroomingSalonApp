@@ -4,9 +4,9 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class Pets
+    class Pet
     {
-        private static int lastAccountId = 0;
+        private static int lastPetId = 0;
 
         #region Properties
         public int PetId { get; }
@@ -14,14 +14,15 @@ namespace GroomingSalonApp
         public string PetName { get; set; }
         public string Species { get; set; }
         public string Breed { get; set; }
-        public DateTime PetBirthday { get; set; }
+        public DateTime Birthday { get; set; }
         #endregion
 
         #region Constructor
-        public Pets(int customerId, string petName)
+        public Pet()
         {
-            CustomerId = customerId;
-            PetName = petName; 
+            
+            PetId= ++lastPetId;
+          
         }
         #endregion
     }

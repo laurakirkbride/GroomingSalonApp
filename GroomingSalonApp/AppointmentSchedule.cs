@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class GroomingSchedule
+    class AppointmentSchedule
     {
         private static int lastAppointmentId = 0;
 
