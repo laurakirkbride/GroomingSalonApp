@@ -4,18 +4,22 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
+
+    enum TypeOfService
+    {
+        Bath,
+        Groom,
+        Nail
+        
+    };
+    
     class Service
     {
-        private static int lastServiceId = 0;
+       
 
         #region Properties
-        public int ServiceId { get; }
-        public string ServiceName { get; set; }
-        public string ServiceDescription { get; set; }
-        public string Species { get; set; }
-        public string Breed { get; set; }
-        public double ServicePrice { get; set; }
-
+       
+        public TypeOfService ServiceType { get; set; }
         #endregion
     }
 }

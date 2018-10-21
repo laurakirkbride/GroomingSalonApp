@@ -4,8 +4,9 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class Transaction { 
-    
+    class Transaction
+    {
+
 
         private static int lastTransactionId = 0;
 
@@ -16,6 +17,15 @@ namespace GroomingSalonApp
         public int ServiceId { get; set; }
         public double ServicePrice { get; set; }
         public DateTime DatePaid { get; set; }
+        #endregion
+
+        #region Constructor
+        public Transaction()
+        {
+
+            TransactionId = ++lastTransactionId;
+
+        }
         #endregion
     }
 }

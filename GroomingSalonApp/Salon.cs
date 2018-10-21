@@ -6,6 +6,7 @@ namespace GroomingSalonApp
 {
     class Salon
     {
+        private static List<Pet> pets = new List<Pet>();
 
         /// <summary>
         /// Create an customer account at the salon
@@ -43,21 +44,35 @@ namespace GroomingSalonApp
         /// <param name="species">spcies</param>
         /// <param name="petBirthDay">Birthday of pet</param>
         /// <returns>Newly created account</returns>
-        public static Pet CreatePet(int customerId, string petName, string species, string breed, DateTime birthday)
+        public static Pet CreatePet(int customerId, string petName)
         {
             var pet = new Pet
             {
                 CustomerId = customerId, 
                 PetName=petName,
-                Species=species,
-                Breed=breed,
-                Birthday=birthday
+       
+                //Birthday=birthday
             };
+            pets.Add(pet);
             return pet;
+        }
+        public static Appointment CreateAppointment(int customerId, int petId,DateTime apptDate)
+        {
+            var appt = new Appointment
+            {
+                CustomerId = customerId,
+                PetId = petId,
+                AppointmentDate = apptDate
+            };
+            return appt;
         }
 
 
-
+        public static IEnumerable<Pet> GetAllPets()
+        {
+            return pets;
+        }
+        
 
     }
 }

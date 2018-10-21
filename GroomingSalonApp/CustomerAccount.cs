@@ -6,6 +6,8 @@ namespace GroomingSalonApp
 {
     class CustomerAccount
     {
+        private static List<CustomerAccount> accounts = new List<CustomerAccount>();
+
         private static int lastAccountId = 0;
 
         #region Properties
@@ -27,5 +29,11 @@ namespace GroomingSalonApp
             CreatedDate = DateTime.Now;
         }
         #endregion
+        
+
+        public static IEnumerable<CustomerAccount> GetAllCustomerAccounts()
+        {
+            return accounts;
+        }
     }
 }
