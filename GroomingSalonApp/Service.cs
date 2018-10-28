@@ -5,21 +5,14 @@ using System.Text;
 namespace GroomingSalonApp
 {
 
-    enum TypeOfService
-    {
-        Bath,
-        Groom,
-        Nail
-        
-    };
     
     class Service
     {
-       
+
 
         #region Properties
-       
-        public TypeOfService ServiceType { get; set; }
+        public int ServiceId { get; set; }
+        public String ServiceType { get; set; }
         #endregion
     }
 }

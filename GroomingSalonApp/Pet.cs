@@ -7,12 +7,9 @@ namespace GroomingSalonApp
     class Pet
     {
 
-       
-
-        private static int lastPetId = 0;
 
         #region Properties
-        public int PetId { get; }
+        public int PetId { get; set; }
         public int CustomerId { get; set; }
         public string PetName { get; set; }
         public string Species { get; set; }
@@ -23,8 +20,7 @@ namespace GroomingSalonApp
         #region Constructor
         public Pet()
         {
-            
-            PetId= ++lastPetId;
+           
           
         }
         #endregion

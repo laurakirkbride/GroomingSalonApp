@@ -8,10 +8,10 @@ namespace GroomingSalonApp
     {
 
 
-        private static int lastTransactionId = 0;
+       
 
         #region Properties
-        public int TransactionId { get; }
+        public int TransactionId { get; set; }
         public int CustomerId { get; set; }
         public int PetId { get; set; }
         public int ServiceId { get; set; }
@@ -23,7 +23,7 @@ namespace GroomingSalonApp
         public Transaction()
         {
 
-            TransactionId = ++lastTransactionId;
+          
 
         }
         #endregion

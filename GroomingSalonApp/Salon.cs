@@ -6,7 +6,7 @@ namespace GroomingSalonApp
 {
     class Salon
     {
-        private static List<Pet> pets = new List<Pet>();
+        private static SalonModel db = new SalonModel();
 
         /// <summary>
         /// Create an customer account at the salon
@@ -30,7 +30,8 @@ namespace GroomingSalonApp
                 Zip=zip,
                 PhoneNumber=phoneNumber
             };
-            
+            db.CustomerAccounts.Add(account);
+            db.SaveChanges();
             return account;
         }
 
@@ -53,7 +54,8 @@ namespace GroomingSalonApp
        
                 //Birthday=birthday
             };
-            pets.Add(pet);
+            db.Pets.Add(pet);
+            db.SaveChanges();
             return pet;
         }
         public static Appointment CreateAppointment(int customerId, int petId,DateTime apptDate)
@@ -64,13 +66,18 @@ namespace GroomingSalonApp
                 PetId = petId,
                 AppointmentDate = apptDate
             };
+            db.Appointments.Add(appt);
+
+            db.SaveChanges();
+
             return appt;
         }
 
 
         public static IEnumerable<Pet> GetAllPets()
         {
-            return pets;
+            return db.Pets;
+            
         }
         
 

@@ -4,12 +4,16 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace BankAppSep18
+namespace GroomingSalonApp
 {
     class SalonModel : DbContext
     {
         public DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }
+        public DbSet<Pet> Pets { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
+
+        public DbSet<Service> Services { get; set; }
 
         protected override void OnConfiguring(
             DbContextOptionsBuilder optionsBuilder)
@@ -43,6 +47,36 @@ namespace BankAppSep18
                     .ValueGeneratedOnAdd();
 
             });
+
+            modelBuilder.Entity<Pet>(entity =>
+            {
+                entity.HasKey(e => e.PetId)
+                    .HasName("PK_PetId");
+
+                entity.Property(e => e.PetId)
+                    .ValueGeneratedOnAdd();
+
+            });
+
+            modelBuilder.Entity<Appointment>(entity =>
+            {
+                entity.HasKey(e => e.AppointmentId)
+                    .HasName("PK_AppointmentId");
+
+                entity.Property(e => e.AppointmentId)
+                    .ValueGeneratedOnAdd();
+
+            });
+            modelBuilder.Entity<Service>(entity =>
+            {
+                entity.HasKey(e => e.ServiceId)
+                    .HasName("PK_ServiceId");
+
+                entity.Property(e => e.ServiceId)
+                    .ValueGeneratedOnAdd();
+
+            });
+
 
         }
 

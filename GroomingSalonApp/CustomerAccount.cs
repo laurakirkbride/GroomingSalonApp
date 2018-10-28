@@ -8,10 +8,10 @@ namespace GroomingSalonApp
     {
         private static List<CustomerAccount> accounts = new List<CustomerAccount>();
 
-        private static int lastAccountId = 0;
+    
 
         #region Properties
-        public int CustomerId { get; }
+        public int CustomerId { get; set; }
         public string CustomerFN { get; set; }
         public string CustomerLN { get; set; }
         public string StreetAddress { get; set; }
@@ -25,7 +25,7 @@ namespace GroomingSalonApp
         #region Constructor
         public CustomerAccount()
         {
-            CustomerId = ++lastAccountId;
+           
             CreatedDate = DateTime.Now;
         }
         #endregion

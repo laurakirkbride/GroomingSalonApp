@@ -9,7 +9,7 @@ namespace GroomingSalonApp
         private static int lastAppointmentId = 0;
 
         #region #region Properties
-        public int AppointmentId { get; }
+        public int AppointmentId { get; set; }
         public int CustomerId { get; set; }
         public int PetId { get; set; }
         public Service Service { get; set; }

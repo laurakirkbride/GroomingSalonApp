@@ -24,6 +24,7 @@ namespace GroomingSalonApp
 
                 switch (option)
                 {
+                    
                     case "0":
                         return;
                     case "1": //Create Customer Account
@@ -76,12 +77,12 @@ namespace GroomingSalonApp
                         try
                         {
                             Console.WriteLine("Enter Customer Id: ");
-                            var customerId = Convert.ToInt32(Console.ReadLine());
+                            var customerId1 = Convert.ToInt32(Console.ReadLine());
 
                             Console.WriteLine("Enter PetName: ");
                             var petName = Console.ReadLine();
 
-                            var pet = Salon.CreatePet(customerId, petName);
+                            var pet = Salon.CreatePet(customerId1, petName);
                         }
                         catch (FormatException fx)
                         {
@@ -97,15 +98,15 @@ namespace GroomingSalonApp
                         {
                             //Change to Customer Phone Number after Database is added
                             Console.WriteLine("Enter Customer Id: ");
-                            var customerId= Convert.ToInt32(Console.ReadLine());
-                            PrintAllPetss();
+                            var customerId2= Convert.ToInt32(Console.ReadLine());
+                            PrintAllPets();
                             Console.Write("PetId:");
                             var petId = Convert.ToInt32(Console.ReadLine());
                             //Need to add DateTime code
                             Console.Write("Enter Appointment Date (dd-mm-yyyy):");
                             DateTime apptDate = DateTime.ParseExact(Console.ReadLine(), "dd-mm-yyyy", provider);
 
-                            var appt = Salon.CreateAppointment(customerId, petId, apptDate);
+                            var appt = Salon.CreateAppointment(customerId2, petId, apptDate);
                             Console.WriteLine($"CustomerId: {appt.CustomerId}, PetId: {appt.PetId}, Appt Date:{appt.AppointmentDate}");
                         }
                         catch (ArgumentNullException nullE)
@@ -122,7 +123,8 @@ namespace GroomingSalonApp
                         }
                         break;
                     case "4"://Print all pets
-                        PrintAllPetss();
+                      
+                        PrintAllPets();
                         break;
                     default:
                         break;
@@ -131,13 +133,14 @@ namespace GroomingSalonApp
 
 
         }
-        private static void PrintAllPetss()
+        private static void PrintAllPets()
         {
             var pets = Salon.GetAllPets();
             foreach (var pet in pets)
             {
-                Console.WriteLine($"PetId: {pet.PetId}, Pet Name: {pet.PetName}");
+              Console.WriteLine($"PetId: {pet.PetId}, Pet Name: {pet.PetName}");
             }
+         
         }
     }
 }
