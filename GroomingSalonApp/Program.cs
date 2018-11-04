@@ -7,8 +7,7 @@ namespace GroomingSalonApp
     {
         static void Main(string[] args)
         {
-
-        CultureInfo provider = CultureInfo.InvariantCulture;
+            CultureInfo provider = CultureInfo.InvariantCulture;
 
             Console.WriteLine("********************************");
             Console.WriteLine("Welcome to the Grooming Salon!");
@@ -19,10 +18,7 @@ namespace GroomingSalonApp
                 Console.WriteLine("1. Create a Customer Account");
                 Console.WriteLine("2. Add a Pet to your Customer Account");
                 Console.WriteLine("3. Schedule Grooming Appointment");
-                Console.WriteLine("4. Print all pets");
-                Console.WriteLine("5. Print all pets for a customer account");
-                Console.WriteLine("6. Print all appointments for a customer account");
-
+                Console.WriteLine("4. Print all pets for a customer account");
                 Console.Write("Please select an option: ");
                 var option = Console.ReadLine();
 
@@ -130,16 +126,6 @@ namespace GroomingSalonApp
                       
                         PrintAllPets();
                         break;
-                    case "5"://Print all pets for a given customerId
-                        Console.Write("CustomerId : ");
-                        int customerId = Convert.ToInt32(Console.ReadLine());
-                        PrintAllPets(customerId);
-                        break;
-                    case "6"://Print all appointments for customer
-                        Console.Write("CustomerId : ");
-                        int custId = Convert.ToInt32(Console.ReadLine());
-                        PrintAllAppointments(custId);
-                        break;
                     default:
                         break;
                 }
@@ -152,29 +138,9 @@ namespace GroomingSalonApp
             var pets = Salon.GetAllPets();
             foreach (var pet in pets)
             {
-              Console.WriteLine($"PetId: {pet.PetId}, CustomerId: {pet.CustomerId}, Pet Name: {pet.PetName}");
+              Console.WriteLine($"PetId: {pet.PetId}, Pet Name: {pet.PetName}");
             }
          
-        }
-
-        private static void PrintAllPets(int customerId)
-        {
-            var pets = Salon.GetAllPets(customerId);
-            foreach (var pet in pets)
-            {
-                Console.WriteLine($"PetId: {pet.PetId}, Pet Name: {pet.PetName}");
-            }
-
-        }
-
-        private static void PrintAllAppointments(int customerId)
-        {
-            var appts = Salon.GetAllAppointments(customerId);
-            foreach (var a in appts)
-            {
-                Console.WriteLine($"CustomerId: {a.CustomerId}, PetId: {a.PetId}, Service: {a.Service}, AppointmentDate: {a.AppointmentDate}, ");
-            }
-
         }
     }
 }

@@ -38,8 +38,6 @@ namespace GroomingSalonApp.Migrations
                     b.HasKey("AppointmentId")
                         .HasName("PK_AppointmentId");
 
-                    b.HasIndex("CustomerId");
-
                     b.HasIndex("ServiceId");
 
                     b.ToTable("Appointments");
@@ -94,8 +92,6 @@ namespace GroomingSalonApp.Migrations
                     b.HasKey("PetId")
                         .HasName("PK_PetId");
 
-                    b.HasIndex("CustomerId");
-
                     b.ToTable("Pets");
                 });
 
@@ -137,22 +133,9 @@ namespace GroomingSalonApp.Migrations
 
             modelBuilder.Entity("GroomingSalonApp.Appointment", b =>
                 {
-                    b.HasOne("GroomingSalonApp.CustomerAccount", "CustomerAccount")
-                        .WithMany("Appointments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("GroomingSalonApp.Service", "Service")
                         .WithMany()
                         .HasForeignKey("ServiceId");
-                });
-
-            modelBuilder.Entity("GroomingSalonApp.Pet", b =>
-                {
-                    b.HasOne("GroomingSalonApp.CustomerAccount", "CustomerAccount")
-                        .WithMany("Pets")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 
 namespace GroomingSalonApp
@@ -80,18 +79,7 @@ namespace GroomingSalonApp
             return db.Pets;
             
         }
-        public static IEnumerable<Pet> GetAllPets(int customerId)
-        {
-            return db.Pets.Where(p => p.CustomerId == customerId).OrderBy(p => p.PetName);
-
-        }
-
-        public static IEnumerable<Appointment> GetAllAppointments(int customerId)
-        {
-            return db.Appointments.Where(a => a.CustomerId == customerId).OrderBy(a => a.AppointmentDate);
-
-        }
-
+        
 
     }
 }
