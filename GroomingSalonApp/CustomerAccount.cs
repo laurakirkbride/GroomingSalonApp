@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -20,6 +21,8 @@ namespace GroomingSalonApp
         public string Zip { get; set; }
         public string PhoneNumber { get; set; }
         public DateTime CreatedDate { get; set; }
+        public virtual ICollection<Pet> Pets { get; set; }
+        public virtual ICollection<Appointment> Appointments { get; set; }
         #endregion
 
         #region Constructor

@@ -4,14 +4,16 @@ using GroomingSalonApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroomingSalonApp.Migrations
 {
     [DbContext(typeof(SalonModel))]
-    partial class SalonModelModelSnapshot : ModelSnapshot
+    [Migration("20181104042428_relationships")]
+    partial class relationships
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -37,8 +39,6 @@ namespace GroomingSalonApp.Migrations
 
                     b.HasKey("AppointmentId")
                         .HasName("PK_AppointmentId");
-
-                    b.HasIndex("CustomerId");
 
                     b.HasIndex("ServiceId");
 
@@ -137,11 +137,6 @@ namespace GroomingSalonApp.Migrations
 
             modelBuilder.Entity("GroomingSalonApp.Appointment", b =>
                 {
-                    b.HasOne("GroomingSalonApp.CustomerAccount", "CustomerAccount")
-                        .WithMany("Appointments")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("GroomingSalonApp.Service", "Service")
                         .WithMany()
                         .HasForeignKey("ServiceId");

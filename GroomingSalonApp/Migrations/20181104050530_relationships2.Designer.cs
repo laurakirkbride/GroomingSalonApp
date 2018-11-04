@@ -4,14 +4,16 @@ using GroomingSalonApp;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace GroomingSalonApp.Migrations
 {
     [DbContext(typeof(SalonModel))]
-    partial class SalonModelModelSnapshot : ModelSnapshot
+    [Migration("20181104050530_relationships2")]
+    partial class relationships2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
