@@ -6,7 +6,7 @@ namespace GroomingSalonApp
 {
 
     
-    class Service
+    public class Service
     {
 
 

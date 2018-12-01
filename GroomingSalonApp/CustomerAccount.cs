@@ -4,7 +4,7 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class CustomerAccount
+    public class CustomerAccount
     {
         private static List<CustomerAccount> accounts = new List<CustomerAccount>();
 
@@ -12,6 +12,7 @@ namespace GroomingSalonApp
 
         #region Properties
         public int CustomerId { get; set; }
+        public string EmailAddress { get; set; }
         public string CustomerFN { get; set; }
         public string CustomerLN { get; set; }
         public string StreetAddress { get; set; }

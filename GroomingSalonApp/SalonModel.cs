@@ -6,7 +6,7 @@ using System.Text;
 
 namespace GroomingSalonApp
 {
-    class SalonModel : DbContext
+    public class SalonModel : DbContext
     {
         public DbSet<CustomerAccount> CustomerAccounts { get; set; }
         public DbSet<Transaction> Transactions { get; set; }

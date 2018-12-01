@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace GroomingSalonApp
 {
-    class Salon
+    public class Salon
     {
-        private static SalonModel db = new SalonModel();
+        public static SalonModel db = new SalonModel();
 
         /// <summary>
         /// Create an customer account at the salon
@@ -72,7 +73,11 @@ namespace GroomingSalonApp
 
             return appt;
         }
+        public static IEnumerable<CustomerAccount> GetCustomerAccounts(string emailAddress)
+        {
+            return db.CustomerAccounts.Where(a => a.EmailAddress == emailAddress);
 
+        }
 
         public static IEnumerable<Pet> GetAllPets()
         {
