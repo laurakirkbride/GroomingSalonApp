@@ -26,10 +26,10 @@ namespace GroomingSalonApp
         {
             modelBuilder.Entity<CustomerAccount>(entity =>
             {
-                entity.HasKey(e => e.CustomerId)
+                entity.HasKey(e => e.EmailAddress)
                     .HasName("PK_CustomerId");
 
-                entity.Property(e => e.CustomerId)
+                entity.Property(e => e.EmailAddress)
                     .ValueGeneratedOnAdd();
 
                 entity.Property(e => e.CustomerFN)

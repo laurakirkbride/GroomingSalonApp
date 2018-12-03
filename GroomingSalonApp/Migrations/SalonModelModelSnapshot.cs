@@ -45,9 +45,8 @@ namespace GroomingSalonApp.Migrations
 
             modelBuilder.Entity("GroomingSalonApp.CustomerAccount", b =>
                 {
-                    b.Property<int>("CustomerId")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                    b.Property<string>("EmailAddress")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
 
@@ -57,17 +56,19 @@ namespace GroomingSalonApp.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int>("CustomerId");
+
                     b.Property<string>("CustomerLN");
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("State");
+                    b.Property<int>("State");
 
                     b.Property<string>("StreetAddress");
 
                     b.Property<string>("Zip");
 
-                    b.HasKey("CustomerId")
+                    b.HasKey("EmailAddress")
                         .HasName("PK_CustomerId");
 
                     b.ToTable("CustomerAccounts");
@@ -84,6 +85,8 @@ namespace GroomingSalonApp.Migrations
                     b.Property<string>("Breed");
 
                     b.Property<int>("CustomerId");
+
+                    b.Property<string>("EmailAddress");
 
                     b.Property<string>("PetName");
 
@@ -115,9 +118,9 @@ namespace GroomingSalonApp.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerId");
-
                     b.Property<DateTime>("DatePaid");
+
+                    b.Property<int>("EmailAddress");
 
                     b.Property<int>("PetId");
 

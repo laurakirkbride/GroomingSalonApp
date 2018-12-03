@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GroomingSalonApp.Migrations
 {
     [DbContext(typeof(SalonModel))]
-    [Migration("20181028053046_resolveNamespace")]
-    partial class resolveNamespace
+    [Migration("20181202234358_enumState")]
+    partial class enumState
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -21,11 +21,34 @@ namespace GroomingSalonApp.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("GroomingSalonApp.CustomerAccount", b =>
+            modelBuilder.Entity("GroomingSalonApp.Appointment", b =>
                 {
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("AppointmentId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("AppointmentDate");
+
+                    b.Property<DateTime>("CreatedDate");
+
+                    b.Property<int>("CustomerId");
+
+                    b.Property<int>("PetId");
+
+                    b.Property<int?>("ServiceId");
+
+                    b.HasKey("AppointmentId")
+                        .HasName("PK_AppointmentId");
+
+                    b.HasIndex("ServiceId");
+
+                    b.ToTable("Appointments");
+                });
+
+            modelBuilder.Entity("GroomingSalonApp.CustomerAccount", b =>
+                {
+                    b.Property<string>("EmailAddress")
+                        .ValueGeneratedOnAdd();
 
                     b.Property<string>("City");
 
@@ -35,17 +58,19 @@ namespace GroomingSalonApp.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
+                    b.Property<int>("CustomerId");
+
                     b.Property<string>("CustomerLN");
 
                     b.Property<string>("PhoneNumber");
 
-                    b.Property<string>("State");
+                    b.Property<int>("State");
 
                     b.Property<string>("StreetAddress");
 
                     b.Property<string>("Zip");
 
-                    b.HasKey("CustomerId")
+                    b.HasKey("EmailAddress")
                         .HasName("PK_CustomerId");
 
                     b.ToTable("CustomerAccounts");
@@ -63,6 +88,8 @@ namespace GroomingSalonApp.Migrations
 
                     b.Property<int>("CustomerId");
 
+                    b.Property<string>("EmailAddress");
+
                     b.Property<string>("PetName");
 
                     b.Property<string>("Species");
@@ -73,15 +100,29 @@ namespace GroomingSalonApp.Migrations
                     b.ToTable("Pets");
                 });
 
+            modelBuilder.Entity("GroomingSalonApp.Service", b =>
+                {
+                    b.Property<int>("ServiceId")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("ServiceType");
+
+                    b.HasKey("ServiceId")
+                        .HasName("PK_ServiceId");
+
+                    b.ToTable("Services");
+                });
+
             modelBuilder.Entity("GroomingSalonApp.Transaction", b =>
                 {
                     b.Property<int>("TransactionId")
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CustomerId");
-
                     b.Property<DateTime>("DatePaid");
+
+                    b.Property<int>("EmailAddress");
 
                     b.Property<int>("PetId");
 
@@ -93,6 +134,13 @@ namespace GroomingSalonApp.Migrations
                         .HasName("PK_Transactions");
 
                     b.ToTable("Transactions");
+                });
+
+            modelBuilder.Entity("GroomingSalonApp.Appointment", b =>
+                {
+                    b.HasOne("GroomingSalonApp.Service", "Service")
+                        .WithMany()
+                        .HasForeignKey("ServiceId");
                 });
 #pragma warning restore 612, 618
         }

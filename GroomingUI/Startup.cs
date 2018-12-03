@@ -12,6 +12,8 @@ using Microsoft.EntityFrameworkCore;
 using GroomingUI.Data;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using GroomingSalonApp;
+using Microsoft.AspNetCore.Identity.UI.Services;
 
 namespace GroomingUI
 {
@@ -40,6 +42,8 @@ namespace GroomingUI
             services.AddDefaultIdentity<IdentityUser>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
+
+            services.AddTransient<SalonModel>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 

@@ -20,14 +20,16 @@ namespace GroomingSalonApp
         /// <param name="zip">Customer Zip</param>
         /// <param name="phoneNumber">Phone Number</param>
         /// <returns>Newly created account</returns>
-        public static CustomerAccount CreateCustomerAccount(string customerFN, string customerLN, string streetAddress, string city, string state, string zip, string phoneNumber)
+        public static CustomerAccount CreateCustomerAccount(string emailAddress, string customerFN, string customerLN, string streetAddress, string city, StateList state, string zip, string phoneNumber)
         {
             var account = new CustomerAccount
             {
+                EmailAddress=emailAddress,
                 CustomerFN = customerFN,
                 CustomerLN = customerLN,
                 StreetAddress=streetAddress,
                 City=city,
+                State=state,
                 Zip=zip,
                 PhoneNumber=phoneNumber
             };
@@ -46,11 +48,11 @@ namespace GroomingSalonApp
         /// <param name="species">spcies</param>
         /// <param name="petBirthDay">Birthday of pet</param>
         /// <returns>Newly created account</returns>
-        public static Pet CreatePet(int customerId, string petName)
+        public static Pet CreatePet(string emailAddress, string petName)
         {
             var pet = new Pet
             {
-                CustomerId = customerId, 
+                EmailAddress = emailAddress, 
                 PetName=petName,
        
                 //Birthday=birthday
@@ -79,12 +81,41 @@ namespace GroomingSalonApp
 
         }
 
-        public static IEnumerable<Pet> GetAllPets()
+        public static IEnumerable<Pet> GetAllPets(string emailAddress)
         {
-            return db.Pets;
+            return db.Pets.Where(a => a.EmailAddress == emailAddress); ;
             
         }
+        public static CustomerAccount GetCustomerAccountDetails(int customerId)
+        {
+             return db.CustomerAccounts.SingleOrDefault(m => m.CustomerId == customerId);
+        }
         
+        public static void EditAccount(CustomerAccount updatedAccount)
+        {
+            var oldAccount = Salon.GetCustomerAccountDetails(updatedAccount.CustomerId);
+            
+            oldAccount.CustomerFN = updatedAccount.CustomerFN;
+            oldAccount.CustomerLN = updatedAccount.CustomerLN;
+            oldAccount.StreetAddress = updatedAccount.StreetAddress;
+            oldAccount.City = updatedAccount.City;
+            oldAccount.State = updatedAccount.State;
+            oldAccount.Zip = updatedAccount.Zip;
+            oldAccount.PhoneNumber = updatedAccount.PhoneNumber;
+            db.Update(oldAccount);
+            db.SaveChanges();
+        }
+        public static bool CustomerAccountExists(int id)
+        {
+            return db.CustomerAccounts.Any(e => e.CustomerId == id);
+        }
+
+        public static void DeleteCustomerAccount(int customerId)
+        {
+            var account = Salon.GetCustomerAccountDetails(customerId);
+            db.CustomerAccounts.Remove(account);
+            db.SaveChanges();
+        }
 
     }
 }
